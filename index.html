@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="High-level design website presentation for the Device Management Hub.">
+    <title>Solution Design Device Management Hub</title>
+    <link rel="stylesheet" href="styles.css?v=restore-alm-label-1">
+  </head>
+  <body>
+    <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+    <header class="topbar">
+      <a class="brand" href="#title" aria-label="Solution Design Device Management Hub">
+        <span class="brand-mark">D</span>
+        <span>
+          <strong>Solution Design</strong>
+          <small>Device Management Hub</small>
+        </span>
+      </a>
+      <nav class="section-nav" aria-label="Presentation sections">
+        <a href="#title">Demo</a>
+        <a href="#design-response">Approach</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#schema">Schema</a>
+        <a href="#journey">Journey</a>
+        <a href="#automation">Automation</a>
+        <a href="#alm">ALM</a>
+        <a href="#benefits">Benefits</a>
+      </nav>
+      <div class="topbar-actions">
+        <button class="outline-button" type="button" data-present data-present-label="Present" data-exit-label="Exit">Present</button>
+      </div>
+    </header>
+
+    <div class="presentation-controls" aria-label="Presentation controls">
+      <button type="button" data-prev aria-label="Previous section">Prev</button>
+      <span id="slideCounter">1 / 11</span>
+      <button type="button" data-next aria-label="Next section">Next</button>
+      <button type="button" data-present data-present-label="Present" data-exit-label="Exit">Present</button>
+    </div>
+
+    <main>
+      <section class="hero section" id="title" data-section="Title">
+        <div class="hero-header">
+          <p class="eyebrow">Microsoft Power Platform</p>
+          <h1>Device Management</h1>
+          <ol class="lifecycle-flow" aria-label="Device management lifecycle">
+            <li><span>01</span> Request</li>
+            <li><span>02</span> Approve</li>
+            <li><span>03</span> Allocate</li>
+            <li><span>04</span> Issue</li>
+            <li><span>05</span> Track</li>
+            <li><span>06</span> Recover</li>
+          </ol>
+        </div>
+        <div class="hero-body">
+          <div class="hero-visual" aria-label="Device management solution demo video">
+            <video
+              class="hero-video"
+              src="assets/device-demo.mp4"
+              autoplay
+              muted
+              loop
+              playsinline
+              disablepictureinpicture
+              preload="auto"
+            ></video>
+          </div>
+          <p class="hero-summary">A Microsoft Power Platform solution for managing device requests, approvals, allocation, issuing, tracking and returns. The aim is to give the device team one controlled and auditable process from request through to device recovery or retirement.</p>
+        </div>
+        <div class="hero-footer">
+          <div class="hero-meta">
+            <span>Presented by Joram Antwi</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted" id="design-response" data-section="Design Approach">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <div>
+            <p class="eyebrow">Design Approach</p>
+          </div>
+        </div>
+        <div class="approach-layout">
+          <div class="approach-lenses" aria-label="Design lenses">
+            <article style="--accent:#00703c"><span>01</span><h3>Stakeholders</h3><p>Device team, requesters, approvers, technicians, security/compliance and recipients.</p></article>
+            <article style="--accent:#22b8cf"><span>02</span><h3>Use cases</h3><p>New starters, contractors, additional equipment, replacements, lost/stolen devices and returns.</p></article>
+            <article style="--accent:#e0a911"><span>03</span><h3>Data</h3><p>Requests, items, assets, catalogue, approvals, assignments, transactions and policy evidence.</p></article>
+            <article style="--accent:#9775fa"><span>04</span><h3>Process</h3><p>Raise, review, allocate, issue, acknowledge and track through recovery or retirement.</p></article>
+          </div>
+          <div class="design-cycle-panel">
+            <h3>System design use case flow</h3>
+            <div class="system-cycle-wrap">
+              <ol class="system-cycle" aria-label="System design use case flow">
+                <li><span>01</span><strong>Device Requested</strong></li>
+                <li><span>02</span><strong>Approval</strong></li>
+                <li><span>03</span><strong>Allocated</strong></li>
+                <li><span>04</span><strong>Issue</strong></li>
+                <li><span>05</span><strong>Track</strong></li>
+                <li><span>06</span><strong>Recover</strong></li>
+              </ol>
+              <div class="cycle-core" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="architecture" data-section="Solution Architecture">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <div>
+            <p class="eyebrow">Solution Architecture</p>
+          </div>
+        </div>
+        <div class="arch-layers" aria-label="Architecture layers">
+          <article class="arch-layer" style="--layer:#3b82f6">
+            <h3>Users</h3>
+            <ul>
+              <li>Device team</li>
+              <li>Approvers</li>
+              <li>Technicians</li>
+            </ul>
+          </article>
+          <article class="arch-layer" style="--layer:#22a06b">
+            <h3>Model-driven app</h3>
+            <ul>
+              <li>Forms</li>
+              <li>Views</li>
+              <li>Dashboards</li>
+              <li>BPF</li>
+            </ul>
+          </article>
+          <article class="arch-layer" style="--layer:#e0a911">
+            <h3>Dataverse</h3>
+            <ul>
+              <li>Tables</li>
+              <li>Relationships</li>
+              <li>Security</li>
+              <li>Audit</li>
+            </ul>
+          </article>
+          <article class="arch-layer" style="--layer:#22b8cf">
+            <h3>Power Automate</h3>
+            <ul>
+              <li>Approvals</li>
+              <li>Notifications</li>
+              <li>Escalations</li>
+            </ul>
+          </article>
+          <article class="arch-layer" style="--layer:#9775fa">
+            <h3>Integrations</h3>
+            <ul>
+              <li>Entra ID</li>
+              <li>Intune</li>
+              <li>Employee feed</li>
+            </ul>
+          </article>
+          <article class="arch-layer" style="--layer:#94a3b8">
+            <h3>ALM</h3>
+            <ul>
+              <li>Solutions</li>
+              <li>Pipelines</li>
+              <li>Azure DevOps</li>
+            </ul>
+          </article>
+        </div>
+        <div class="arch-callouts">
+          <article>
+            <h4>Desktop + mobile</h4>
+            <p>Same model-driven app experience; mobile access through Power Apps mobile where appropriate.</p>
+          </article>
+          <article>
+            <h4>Teams approvals</h4>
+            <p>Adaptive Cards/Approvals through Power Automate. This does not imply a separate canvas app.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section muted" id="schema" data-section="Core Dataverse Schema">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <div>
+            <p class="eyebrow">Core Dataverse Schema</p>
+          </div>
+        </div>
+
+        <div class="schema-erd">
+          <div class="erd-matrix">
+            <article class="erd-entity is-people is-primary">
+              <header><span class="schema-number" tabindex="0">01<span class="schema-popover" aria-hidden="true"><b>Device Recipient</b><em>Stores the person receiving the device. Supports employees, contractors, temporary workers, and external stakeholders without depending only on the Dataverse User table.</em><strong>Relationships:</strong> One Device Recipient can have many Device Requests and many Device Assignments. Can store Entra Object ID / UPN where available for identity matching.</span></span> Device Recipient</header>
+              <ul>
+                <li>Full Name</li>
+                <li>Email / UPN</li>
+                <li>Recipient Type</li>
+                <li>Department</li>
+                <li>Job Title</li>
+              </ul>
+              <p class="erd-rel">1:N → Requests, Assignments</p>
+            </article>
+            <article class="erd-entity is-request is-primary">
+              <header><span class="schema-number" tabindex="0">02<span class="schema-popover" aria-hidden="true"><b>Device Request</b><em>Main record for each device request. Captures who the request is for, why the device is needed, required date, priority, delivery method, and current request status.</em><strong>Relationships:</strong> One Device Request can have many Device Request Items, many Approval Decisions, many Policy Acknowledgements, and can relate to Device Assignments. Lookup to Device Recipient for Requested For. Lookup to User for Requested By.</span></span> Device Request</header>
+              <ul>
+                <li>Request Number</li>
+                <li>Requested For</li>
+                <li>Request Type</li>
+                <li>Request Status</li>
+                <li>Required By Date</li>
+              </ul>
+              <p class="erd-rel">1:N → Items, Approvals, Assignments</p>
+            </article>
+            <article class="erd-entity is-request">
+              <header><span class="schema-number" tabindex="0">03<span class="schema-popover" aria-hidden="true"><b>Device Request Item</b><em>Child table that stores individual items requested within a device request, such as laptop, phone, monitor, or accessory. Allows one request to contain multiple devices/items.</em><strong>Relationships:</strong> Many Device Request Items belong to one Device Request. Lookup to Device Catalogue for Requested Model. Optional lookup to Device Asset once a physical device is allocated.</span></span> Device Request Item</header>
+              <ul>
+                <li>Item</li>
+                <li>Device Type</li>
+                <li>Requested Model</li>
+                <li>Quantity</li>
+                <li>Allocated Asset</li>
+              </ul>
+              <p class="erd-rel">N:1 Request · 0..1 Asset</p>
+            </article>
+            <article class="erd-entity is-asset">
+              <header><span class="schema-number" tabindex="0">04<span class="schema-popover" aria-hidden="true"><b>Device Catalogue</b><em>Approved list of device models that can be requested or issued. This is the controlled catalogue of standard/non-standard hardware models.</em><strong>Relationships:</strong> One Device Catalogue record can relate to many Device Assets. It can also be selected from Device Request Item as the requested model.</span></span> Device Catalogue</header>
+              <ul>
+                <li>Model Name</li>
+                <li>Device Type</li>
+                <li>Manufacturer</li>
+                <li>Standard Model</li>
+                <li>Min Stock Threshold</li>
+              </ul>
+              <p class="erd-rel">1:N → Assets, Request Items</p>
+            </article>
+            <article class="erd-entity is-asset is-primary">
+              <header><span class="schema-number" tabindex="0">05<span class="schema-popover" aria-hidden="true"><b>Device Asset</b><em>Asset register for physical devices. Tracks actual devices using asset tag, serial number, IMEI, Intune Device ID, status, condition, and current recipient.</em><strong>Relationships:</strong> Many Device Assets belong to one Device Catalogue model. One Device Asset can have many Device Assignments and many Inventory Transactions over time. Optional lookup to Device Recipient for current holder.</span></span> Device Asset</header>
+              <ul>
+                <li>Asset Tag</li>
+                <li>Device Model</li>
+                <li>Serial Number</li>
+                <li>Asset Status</li>
+                <li>Intune Device ID</li>
+              </ul>
+              <p class="erd-rel">N:1 Catalogue · 1:N Assignments</p>
+            </article>
+            <article class="erd-entity is-asset">
+              <header><span class="schema-number" tabindex="0">06<span class="schema-popover" aria-hidden="true"><b>Device Assignment</b><em>Tracks who has been assigned which device and when. Provides chain of custody, expected return date, actual return date, and return condition.</em><strong>Relationships:</strong> Many Device Assignments relate to one Device Asset. Many Device Assignments relate to one Device Recipient. Optional lookup to Device Request for the request that triggered the assignment.</span></span> Device Assignment</header>
+              <ul>
+                <li>Assignment Reference</li>
+                <li>Assigned Date</li>
+                <li>Expected Return Date</li>
+                <li>Assignment Status</li>
+                <li>Return Condition</li>
+              </ul>
+              <p class="erd-rel">N:1 Asset · Recipient · Request</p>
+            </article>
+            <article class="erd-entity is-compliance">
+              <header><span class="schema-number" tabindex="0">07<span class="schema-popover" aria-hidden="true"><b>Approval Decision</b><em>Stores approval history for each device request. Captures approval type, approver, outcome, decision date, and comments.</em><strong>Relationships:</strong> Many Approval Decisions relate to one Device Request. Lookup to User for Approver.</span></span> Approval Decision</header>
+              <ul>
+                <li>Approval Summary</li>
+                <li>Approval Type</li>
+                <li>Approver</li>
+                <li>Approval Outcome</li>
+                <li>Decision Date</li>
+              </ul>
+              <p class="erd-rel">N:1 Device Request</p>
+            </article>
+            <article class="erd-entity is-asset">
+              <header><span class="schema-number" tabindex="0">08<span class="schema-popover" aria-hidden="true"><b>Inventory Transaction</b><em>Stock movement ledger for device assets. Records events such as stock in, reserved, issued, returned, repaired, retired, or disposed.</em><strong>Relationships:</strong> Many Inventory Transactions relate to one Device Asset. Optional lookup to Device Request where the stock movement is linked to a request. Lookup to User for Performed By.</span></span> Inventory Transaction</header>
+              <ul>
+                <li>Transaction Reference</li>
+                <li>Transaction Type</li>
+                <li>Transaction Date</li>
+                <li>Performed By</li>
+                <li>Device Condition</li>
+              </ul>
+              <p class="erd-rel">N:1 Asset · Request</p>
+            </article>
+            <article class="erd-entity is-compliance">
+              <header><span class="schema-number" tabindex="0">09<span class="schema-popover" aria-hidden="true"><b>Policy Acknowledgement</b><em>Records that the device recipient has acknowledged the device usage/security policy before or during issue. Supports compliance and audit evidence.</em><strong>Relationships:</strong> Many Policy Acknowledgements can relate to one Device Request, one Device Recipient, and optionally one Device Asset.</span></span> Policy Acknowledgement</header>
+              <ul>
+                <li>Acknowledgement Reference</li>
+                <li>Acknowledgement Status</li>
+                <li>Policy Version</li>
+                <li>Acknowledged Date</li>
+                <li>Confirmation Text</li>
+              </ul>
+              <p class="erd-rel">N:1 Request · Recipient · Asset</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="journey" data-section="User Journey">
+        <div class="section-heading">
+          <span class="section-number">04</span>
+          <div>
+            <p class="eyebrow">User Journey / Business Process Flow</p>
+          </div>
+        </div>
+        <div class="journey-content">
+          <div class="journey-proof">
+            <article class="journey-shot is-primary" data-src="assets/screenshots/journey-request-items.png" tabindex="0" role="button" aria-label="Expand Requested items screenshot">
+              <div class="journey-media" data-label="Device request items"></div>
+              <h3>1. Requested items</h3>
+              <p>Multiple requested devices sit under one Device Request, with the allocated asset visible against each line.</p>
+            </article>
+            <div class="journey-supporting">
+              <article class="journey-shot" data-src="assets/screenshots/journey-stock-catalogue.png" tabindex="0" role="button" aria-label="Expand Stock allocation screenshot">
+                <div class="journey-media" data-label="Stock allocation and device catalogue"></div>
+                <h3>2. Stock allocation</h3>
+                <p>The catalogue defines approved models, thresholds and whether approval is required.</p>
+              </article>
+              <article class="journey-shot" data-src="assets/screenshots/journey-approval-bpf.png" tabindex="0" role="button" aria-label="Expand Approval and completion screenshot">
+                <div class="journey-media" data-label="Approval decision and BPF completion"></div>
+                <h3>3. Approval and completion</h3>
+                <p>The approval record and BPF provide the audit trail as the request moves to completion.</p>
+              </article>
+            </div>
+          </div>
+          <ol class="journey-rail" aria-label="Journey stages">
+            <li tabindex="0"><span class="journey-label">Request Intake</span><span class="journey-detail" aria-hidden="true">Capture the recipient, request type, priority and required date before the request moves into review.</span></li>
+            <li tabindex="0"><span class="journey-label">Review and Approval</span><span class="journey-detail" aria-hidden="true">Validate the request and capture the approval decision, including approver, approval type, date and notes.</span></li>
+            <li tabindex="0"><span class="journey-label">Stock Allocation</span><span class="journey-detail" aria-hidden="true">Check the catalogue and available assets, then reserve the physical device that will fulfil the request item.</span></li>
+            <li tabindex="0"><span class="journey-label">Issue and Acknowledgement</span><span class="journey-detail" aria-hidden="true">Issue or ship the device, then capture policy acknowledgement before closing the handover.</span></li>
+            <li tabindex="0"><span class="journey-label">Complete</span><span class="journey-detail" aria-hidden="true">Close the request with assignment, inventory movement and audit records in place.</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section" id="automation" data-section="Automation and Integration">
+        <div class="section-heading">
+          <span class="section-number">05</span>
+          <div>
+            <p class="eyebrow">Automation and Integration Design</p>
+          </div>
+        </div>
+        <div class="automation-layout">
+          <div class="automation-stack">
+            <article class="panel">
+              <h3>Power Automate orchestration</h3>
+              <p class="panel-note">Handles event-based and time-based workflow across the request lifecycle.</p>
+              <ul class="flow-list">
+                <li>Approval notifications</li>
+                <li>SLA reminders</li>
+                <li>Stock threshold alerts when available units drop below threshold</li>
+                <li>Policy acknowledgement triggers when a device is issued</li>
+              </ul>
+            </article>
+            <article class="panel">
+              <h3>Dataverse plugins</h3>
+              <p class="panel-note">C# logic registered against Dataverse events, running server-side from app, API or import changes.</p>
+              <ul class="flow-list">
+                <li>Validate stock availability before confirming reservation</li>
+                <li>Block Issued status without completed policy acknowledgement</li>
+                <li>Log Inventory Transaction when a Device Assignment is created</li>
+              </ul>
+            </article>
+          </div>
+          <div class="integration-stack">
+            <article>
+              <h3>Microsoft Entra ID</h3>
+              <p>Day-one enrichment for Device Recipient records. Graph lookup by UPN stores Entra Object ID for identity matching and Intune linkage.</p>
+            </article>
+            <article>
+              <h3>Microsoft Intune</h3>
+              <p>Writes Intune Device ID back to Device Asset. Lost or Retired status can trigger Graph-based remote wipe or retire actions.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="alm" data-section="Azure DevOps and ALM">
+        <div class="section-heading">
+          <span class="section-number">06</span>
+          <div>
+            <p class="eyebrow">Azure DevOps / ALM</p>
+          </div>
+        </div>
+        <div class="delivery-summary">
+          <article>
+            <h3>Power Platform ALM</h3>
+            <p>Azure DevOps supports work items, source control, validation and managed solution releases.</p>
+          </article>
+          <article>
+            <h3>Controlled promotion</h3>
+            <p>No manual Production changes. The same managed artifact is promoted after testing and approval.</p>
+          </article>
+        </div>
+        <div class="delivery-phases" aria-label="Delivery phases">
+          <article><h3>Discovery</h3><p>Scope and design</p></article>
+          <article><h3>Dev</h3><p>Build unmanaged solution</p></article>
+          <article><h3>Test / UAT</h3><p>Validate managed artifact</p></article>
+          <article><h3>Production</h3><p>Approval-gated release</p></article>
+        </div>
+      </section>
+
+      <section class="section closing muted" id="benefits" data-section="Closing Benefits">
+        <div class="section-heading">
+          <span class="section-number">07</span>
+          <div>
+            <p class="eyebrow">Closing Benefits</p>
+          </div>
+        </div>
+        <div class="benefit-grid">
+          <article><span></span><h3>Single source of truth</h3></article>
+          <article><span></span><h3>Clear user journey</h3></article>
+          <article><span></span><h3>Improved visibility of device requests and stock</h3></article>
+          <article><span></span><h3>Full audit trail</h3></article>
+          <article><span></span><h3>Reduced manual tracking</h3></article>
+          <article><span></span><h3>Scalable Microsoft-native architecture</h3></article>
+        </div>
+        <blockquote>A controlled, auditable and scalable process for managing devices from request through to return or retirement.</blockquote>
+      </section>
+
+    </main>
+
+    <div class="image-lightbox" data-lightbox hidden>
+      <button class="image-lightbox-backdrop" type="button" data-lightbox-close aria-label="Close expanded screenshot"></button>
+      <figure class="image-lightbox-panel" role="dialog" aria-modal="true" aria-label="Expanded screenshot">
+        <button class="image-lightbox-close" type="button" data-lightbox-close aria-label="Close expanded screenshot">Close</button>
+        <img alt="">
+        <figcaption></figcaption>
+      </figure>
+    </div>
+
+    <script src="script.js?v=restore-alm-label-1"></script>
+  </body>
+</html>
